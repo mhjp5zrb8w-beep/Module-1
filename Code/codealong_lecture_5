@@ -1,0 +1,44 @@
+
+#solow simulation function
+function simulate_solow(k0, s, α, δ, n, g, T)
+    k = zeros(T+1)
+    y = zeros(T+1)
+
+    k[1] = k0
+    y[1] = k[1]^α
+
+    for t = 1:T
+        @assert 0 <= s <= 1 "savings rate must be between 0 and 1"
+        #k[t+1] = s * y[t] + (1-δ)*k[t]
+        k[t+1] = s * y[t] + (1-δ)*k[t]/((1+n)*(1+g))
+        y[t+1] = k[t+1]^α
+    end
+    return k, y
+end
+
+
+####pretty printing of output 
+function print_table(k, y)
+    println(rpad("t", 6), rpad("k_t", 12), "y_t")
+    for t in 1:length(k)
+        println(rpad(t, 6), rpad(round(k[t], digits=4), 12), round(y[t], digits=4))
+    end
+end
+
+
+
+
+####parameters
+k0 = 0.1 
+s = 0.3 
+α = 0.33
+δ = 0.1
+T = 100 
+n = 0.01
+g = 0.02
+k, y = simulate_solow(k0, s, α, δ, n, g, T)
+print_table(k, y)
+
+
+
+######
