@@ -6,4 +6,6 @@ I optimized the code by removing unnecessary memory allocations and reducing typ
 
 I created a public GitHub repository for the exercise and used commits to track the changes from the original version to the optimized version.
 
+For my implementation, I created a public GitHub repository and used commits to track the transition from the original unoptimized implementation to the optimized implementation. I completed the performance optimization individually rather than through the partner/fork workflow specified in the original exercise.
+
 AI is too good at doing all that staff
